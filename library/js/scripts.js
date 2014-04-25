@@ -5,33 +5,6 @@ var src=img.src;img.style.width=img.offsetWidth+"px";img.style.height=img.offset
 img.oldSrc=src;img.src=c.Config.spacer;},resize:function(func){var oldonresize=window.onresize;if(typeof window.onresize!='function'){window.onresize=func;}else{window.onresize=function(){if(oldonresize){oldonresize();}
 func();}}}}
 
-// Sticky Sidebar
-//$(function() {  
-//    var offset = $(".col-sm-3").offset(); Sets which element is scrollable. In this case it's the div .sidebar  
-//    var topPadding = 100;  Set how much top-padding the element has.  
-//    $(window).scroll(function() {  
-//        if ($(window).scrollTop() > offset.top) {  
-//            $(".col-sm-3").stop().animate({   Sets which element is scrollable. In this case it's the div .sidebar  
-//                marginTop: $(window).scrollTop() - offset.top + topPadding  
-//            }, 100);  
-//        } else {  
-//            $(".col-sm-3").stop().animate({   Sets which element is scrollable. In this case it's the div .sidebar  
-//                marginTop: 0  
-//            }, 100);  
-//        };  
-//    });  
-//});
-
-//sticky navbar try 1
-//$(document).scroll(function(e){
-//    var scrollTop = $(document).scrollTop();
-//    if(scrollTop > 250){
-//        console.log(scrollTop);
-//        $('.navbar').removeClass('navbar-static-top').addClass('navbar-fixed-top');
-//    } else {
-//        $('.navbar').removeClass('navbar-fixed-top').addClass('navbar-static-top');
-//    }
-//});
 
 //Header Hiding
 // grab an element
@@ -42,27 +15,26 @@ func();}}}}
 //headroom.init();
 
 //Masonry grid
-$(document).ready(function() {
-    var $container = $('.iso');
-$container.imagesLoaded( function(){
-    $container.isotope({   
-        masonry: {
-            gutter: 0,
-            itemSelector: '.item',
-            columnWidth: 3
-        },
-        filter: '*'
-    });
-}); 
-});
+
 
 // Banner Fade
-$(window).on('scroll', function() {
-    $('.jumbotron').css('opacity', function() {
-        return 1 - ($(window).scrollTop() / $(this).outerHeight());
+//$(window).on('scroll', function() {
+//    $('.block').css('opacity', function() {
+//        return 1 - ($(window).scrollTop() / $(this).outerHeight());
+//    });
+//});
+
+$(window).scroll(function () {
+    $('.block').each(function () {
+        if (($(this).offset().top - $(window).scrollTop()) < 20) {
+            $(this).stop().fadeTo('fast', 1);
+        } else {
+            $(this).stop().fadeTo(100, 0);
+        }
     });
 });
 // End Banner Fade
+
 
 
 //STICKY NAVBAR 2
@@ -156,6 +128,11 @@ jQuery(document).ready(function($) {
 		$('a.edit-post').hide();
 	});
 	
+	$('#container').masonry({
+	    "itemSelector": ".item",
+	    "columnWidth": ".grid-sizer",
+	});
+	
 	// Input placeholder text fix for IE
 	// $('[placeholder]').focus(function() {
 	//   var input = $(this);
@@ -194,7 +171,10 @@ jQuery(document).ready(function($) {
 	// });
 			
 	$('.alert-message').alert();
-	
+
 	$('.dropdown-toggle').dropdown();
- 
+ });	
 });
+
+
+

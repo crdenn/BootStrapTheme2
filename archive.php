@@ -3,12 +3,12 @@
 <div class="container">	
 	
 			<div id="content" class="clearfix row">		
-				<div id="main" class="col-sm-12 clearfix" role="main">
-				
+				<div id="main" class="col col-sm-12 clearfix" role="main">
+				<center>
 					<div class="page-header">
 					<?php if (is_category()) { ?>
 						<h1 class="archive_title h2">
-							<span><?php _e("Posts Categorized:", "wpbootstrap"); ?></span> <?php single_cat_title(); ?>
+							 <?php single_cat_title(); ?>
 						</h1>
 					<?php } elseif (is_tag()) { ?> 
 						<h1 class="archive_title h2">
@@ -32,40 +32,39 @@
 					    </h1>
 					<?php } ?>
 					</div>
-
+					</center>
+	<div id="container" class="js-masonry">
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-	<div class="col-sm-3">			
+	<div class="grid-sizer"></div>
+	<div class="item">
 		<div class="panel panel-default">		
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 						<div class="panel-header">
-						
-							<header>	
-								<h3 class="h3"><?php the_title(); ?></h3>
-								<?php the_tags('<p class="tags"><span class="tags-title">' . '</span> ', ' ', '</p>'); ?>							
-							</header> <!-- end article header -->
-						
+	
+								<center><h3 class="h3box"><?php the_title(); ?></h3></center>
+																				
 						</div>
 						
 						<div class="panel-body">
-						
+							
+							<?php the_tags('<p class="tags"><span class="tags-title">' . '</span> ', ' ', '</p>'); ?>
+							
 							<section class="post_content clearfix" itemprop="articleBody">
+								
 								<?php the_content(); ?>
 								
-<!--								<?php wp_link_pages(); ?>
-						-->
+
 							</section> <!-- end article section -->
 						
-<!--						<footer>
-							
-						</footer> <!-- end article footer --*>-->
+
 					</div>
 					</article> <!-- end article -->
 		</div>
 	</div>
-				
+
+	
 					<?php endwhile; ?>	
-				
+</div>
 					<?php if (function_exists('page_navi')) { // if expirimental feature is active ?>
 						
 						<?php page_navi(); // use the page navi function ?>
@@ -97,10 +96,13 @@
 			
 				</div> <!-- end #main -->
     
-<!--				<?php get_sidebar(); // sidebar 1 ?>-->
+				<?php // get_sidebar(); // sidebar 1 ?>
     
 			</div> <!-- end #content -->
 </div>
 </div>
+</div>
+
+
 
 <?php get_footer(); ?>

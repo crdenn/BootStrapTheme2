@@ -1,26 +1,33 @@
 //
 // Panels
 // --------------------------------------------------
-
+// orange: #98530A
+// red: #661D25
+// dark gray: @navbar-inverse-bg
 
 // Base class
 .panel {
-  margin-bottom: @line-height-computed;
+ margin-right: (@line-height-computed / 2);
+ margin-left: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed * 1.4);
   background-color: @panel-bg;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   border-radius: @panel-border-radius;
-  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+//  .box-shadow(0 1px 1px rgba(0,0,0,.05));
 }
 
 // Panel header
 .panel-header {
-  padding: 15px;
+padding: 0 15px 10px 15px;
+  background-color: @navbar-inverse-bg;
   .clearfix();
 }
 
 // Panel contents
 .panel-body {
   padding: 15px;
+  background-color: @gray-lighter;
+	border: 1px solid @navbar-inverse-bg;
   .clearfix();
 }
 
@@ -122,7 +129,6 @@
   margin-bottom: 0;
   font-size: ceil((@font-size-base * 1.125));
   color: inherit;
-
   > a {
     color: inherit;
   }

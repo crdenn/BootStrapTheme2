@@ -11,7 +11,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><?php wp_title( '|', true, 'right' ); ?></title>	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href='http://fonts.googleapis.com/css?family=Headland+One' rel='stylesheet' type='text/css'>		
+		<link href='http://fonts.googleapis.com/css?family=Headland+One|Raleway:100,400|Lora|Roboto:100|Open+Sans:300italic,300,600' rel='stylesheet' type='text/css'>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">	
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
@@ -22,34 +23,37 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-			
+		
+	<?php wp_enqueue_script('jquery'); ?>
+
+
 
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
-				
-	</head>
+<script language="javascript" type="text/javascript" src="<?php bloginfo('template_url'); ?>/library/js/libs/masonry.pkgd.min.js"></script>
+	</head>	
 	
-	<body <?php body_class(); ?> data-spy="scroll" data-target="#navbar">
-
+	<body <?php body_class(); ?> data-spy="scroll" data-target="#nav">
 <!-- Jumbotron -->
 <div id="banner">
 
-	  <div id="fading" class="jumbotron">
+	 <div class="jumbotron">
 	    
-	      <div class="jumboBG">
+	    <div class="jumboBG">
 	        <div class="logoBox">
-	        <a href="<?php echo home_url(); ?>">
-	         <img src="<?php bloginfo('template_directory'); ?>/images/bottlemixx.png" class="jumboLogo center-block">
-	         </a>
-	         <div class="indyStar">
+	       	 	<a href="<?php echo home_url(); ?>">
+	       	 		 <img src="<?php bloginfo('template_directory'); ?>/images/bottlemixx.png" class="jumboLogo center-block">
+	         	</a>
+	         	<div class="indyStar">
 	         		<img src="<?php bloginfo('template_directory'); ?>/images/indy.png">
-	         </div>
+	        	</div>
 	    	</div>
-	    	</div>
-	    </div>	
+	    </div>
+	 </div>	
 
 </div>
+
 
 <!-- End Jumbotron -->				
 
@@ -70,13 +74,7 @@
 					<div class="collapse navbar-collapse navbar-responsive-collapse">
 						<?php wp_bootstrap_main_nav(); // Adjust using Menus in Wordpress Admin ?>
 
-						<!--<?php //if(of_get_option('search_bar', '1')) {?>
-						<form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-							<div class="form-group">
-								<input name="s" id="s" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search','wpbootstrap'); ?>" data-provide="typeahead" data-items="4" data-source='<?php echo $typeahead_data; ?>'>
-							</div>
-						</form>
-						<?php //} ?>-->
+
 					</div>
 
 				</div> <!-- end .container -->
