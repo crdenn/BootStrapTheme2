@@ -229,7 +229,7 @@ function wp_bootstrap_comments($comment, $args, $depth) {
 function list_pings($comment, $args, $depth) {
        $GLOBALS['comment'] = $comment;
 ?>
-        <li id="comment-<?php comment_ID(); ?>"><i class="icon icon-share-alt"></i>&nbsp;<?php comment_author_link(); ?>
+        <li id="comment-<?php comment_ID(); ?>"><i class="icon icon-share-alt"></i>&nbsp;<?php comment_author_link(); ?></li>
 <?php 
 
 }
@@ -537,7 +537,9 @@ if( !function_exists( "theme_js" ) ) {
   
     wp_enqueue_script('bootstrap');
     wp_enqueue_script('wpbs-scripts');
-    wp_enqueue_script('modernizr');    
+    wp_enqueue_script('modernizr');  
+
+      
   }
 }
 
@@ -549,5 +551,22 @@ function mason_script() {
 wp_enqueue_script( 'jquery-masonry' );
 }
 add_action( 'wp_enqueue_scripts', 'mason_script' );
+
+function my_jquery_method() {
+    wp_enqueue_script( 'jquery' );
+}
+
+function waypoints_method() {
+	if( is_category()  ){
+		wp_enqueue_script(
+			'waypoints-script',
+			get_template_directory_uri() . '/js/libs/waypoints.js',
+			array( 'jquery' ),
+			true
+		);
+    }
+}
+add_action( 'wp_enqueue_scripts', 'waypoints_method' );
+
 
 

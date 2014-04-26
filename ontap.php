@@ -5,8 +5,7 @@ Template Name: On the Taps
 get_header(); ?>
 
 <div class="contain">
-<div class="container">
-<div class="block">	
+<div class="container">	
 <div id="content" class="clearfix row">		
 	<div id="main" class="col col-sm-12 clearfix" role="main">
 
@@ -14,23 +13,26 @@ get_header(); ?>
 		
 
 
-<div class="entry-content">
+<div id="entry-content">
 
 <?php the_content(); ?>
 
-<center>
-	<p>
-		<i class="fa fa-arrow-down"></i>
-		 Check out our current selection below. 
-		<i class="fa fa-arrow-down"></i>
 
-	</p>
-</center>
+	<div id="seeMore">
+		<center>
+			<p>
+				<i class="fa fa-arrow-down"></i>
+				 Check out our current selection. 
+				<i class="fa fa-arrow-down"></i>
+			
+			</p>
+		</center>
+	</div>
 
 </div><!-- .entry-content -->
-</div>
 
-<center><h1 class="entry-title row"><?php the_title(); ?></h1></center>
+
+<center><h1 class="entry-title"><?php the_title(); ?></h1></center>
 <?php endwhile; // end of the loop. ?>
 
 <div id="container" class="js-masonry">

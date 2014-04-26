@@ -6,68 +6,45 @@ img.oldSrc=src;img.src=c.Config.spacer;},resize:function(func){var oldonresize=w
 func();}}}}
 
 
-//Header Hiding
-// grab an element
-//var myElement = document.querySelector("header");
-// construct an instance of Headroom, passing the element
-//var headroom  = new Headroom(myElement);
-// initialise
-//headroom.init();
-
-//Masonry grid
 
 
-// Banner Fade
-//$(window).on('scroll', function() {
-//    $('.block').css('opacity', function() {
-//        return 1 - ($(window).scrollTop() / $(this).outerHeight());
-//    });
-//});
 
-$(window).scroll(function () {
-    $('.block').each(function () {
-        if (($(this).offset().top - $(window).scrollTop()) < 20) {
-            $(this).stop().fadeTo('fast', 1);
-        } else {
-            $(this).stop().fadeTo(100, 0);
-        }
-    });
-});
-// End Banner Fade
+// Waypoints fade
+
 
 
 
 //STICKY NAVBAR 2
-$('[data-spy="scroll"]').each(function () {
-  var $spy = $(this).scrollspy('refresh')
-})
-
-$([selector]).removeData('affix').removeClass('affix affix-top affix-bottom');
-
-/* affix the navbar after scroll below header */
-$('#nav').affix({
-      offset: {
-        top: $('header').height()-$('#nav').height()
-      }
-});	
-
-$('#nav-wrapper').height($("#nav").height());
-
-
-/* highlight the top nav as scrolling occurs */
-$('body').scrollspy({ target: '#nav' })
-
-/* smooth scrolling for scroll to top */
-$('.scroll-top').click(function(){
-  $('body,html').animate({scrollTop:0},1000);
-})
-
-/* smooth scrolling for nav sections */
-$('#nav .navbar-nav li>a').click(function(){
-  var link = $(this).attr('href');
-  var posi = $(link).offset().top+50;
-  $('body,html').animate({scrollTop:posi},700);
-})
+//$('[data-spy="scroll"]').each(function () {
+//  var $spy = $(this).scrollspy('refresh')
+//})
+//
+//$('#nav-wrapper').removeData('affix').removeClass('affix affix-top affix-bottom');
+//
+///* affix the navbar after scroll below header */
+//$('#nav').affix({
+//      offset: {
+//        top: $('header').height()-$('#nav').height()
+//      }
+//});	
+//
+//$('#nav-wrapper').height($("#nav").height());
+//
+//
+///* highlight the top nav as scrolling occurs */
+//$('body').scrollspy({ target: '#nav' })
+//
+///* smooth scrolling for scroll to top */
+//$('.scroll-top').click(function(){
+//  $('body,html').animate({scrollTop:0},1000);
+//})
+//
+///* smooth scrolling for nav sections */
+//$('#nav .navbar-nav li>a').click(function(){
+//  var link = $(this).attr('href');
+//  var posi = $(link).offset().top+50;
+//  $('body,html').animate({scrollTop:posi},700);
+//})
 // END STICKY NAVBAR
 
 
@@ -173,8 +150,30 @@ jQuery(document).ready(function($) {
 	$('.alert-message').alert();
 
 	$('.dropdown-toggle').dropdown();
- });	
+ });
+
+// "See More" FADE
+$(window).on('load', function () {
+$('#seeMore').waypoint(function(direction) {
+        if(direction == 'down'){
+            $(this).fadeTo( "slow" , 0.0);
+        }
+        else if(direction == 'up')
+            $(this).fadeTo( "slow" , 1.0);
+            
+}, { offset: 600 })
+});
+
+// BANNER FADE
+$(window).scroll(function(){
+    var percent = $(document).scrollTop() / ($(document).height() - $(window).height());    
+            $('#banner').css('opacity', 1 - (percent * 2.2));
 });
 
 
+// CONTENT FADE
+$(window).scroll(function(){
+    var percent = $(document).scrollTop() / ($(document).height() - $(window).height());    
+            $('#entry-content').css('opacity', 1 - (percent * 1.5));
+});
 

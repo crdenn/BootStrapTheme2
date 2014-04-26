@@ -26,7 +26,7 @@
 		
 	<?php wp_enqueue_script('jquery'); ?>
 
-
+		<script src="<?php bloginfo('template_url'); ?>/library/js/libs/waypoints.min.js"></script>
 
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
