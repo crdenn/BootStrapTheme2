@@ -145,50 +145,48 @@ function wp_bootstrap_register_sidebars() {
 
 // Add custom post types
 
-// Creates "On the Taps" post type
-register_post_type('onTheTaps', array(
-'label' => 'On the Taps',
-'public' => true,
-'show_ui' => true,
-'capability_type' => 'post',
-'hierarchical' => false,
-'rewrite' => array('slug' => 'onthetaps'),
-'query_var' => true,
-'supports' => array(
-'title',
-'editor',
-'excerpt',
-'trackbacks',
-'custom-fields',
-'comments',
-'revisions',
-'thumbnail',
-'author',
-'page-attributes',)
-) );
+add_action( 'init', 'register_custom_post_types' );
 
-// Creates "In the Winestation" post type
-register_post_type('winestation', array(
-'label' => 'In the Winestation',
-'public' => true,
-'show_ui' => true,
-'capability_type' => 'post',
-'hierarchical' => false,
-'rewrite' => array('slug' => 'winestation'),
-'query_var' => true,
-'supports' => array(
-'title',
-'editor',
-'excerpt',
-'trackbacks',
-'custom-fields',
-'comments',
-'revisions',
-'thumbnail',
-'author',
-'page-attributes',)
-) );
-
+function register_custom_post_types() {
+	
+	// Creates "On the Taps" post type
+	register_post_type('onTheTaps', array(
+	'label' => 'On the Taps',
+	'public' => true,
+	'show_ui' => true,
+	'capability_type' => 'post',
+	'hierarchical' => false,
+	'rewrite' => array('slug' => 'onthetaps'),
+	'query_var' => true,
+	'supports' => array(
+	'title',
+	'editor',
+	'revisions',
+	'thumbnail',
+	'author',
+	'page-attributes',),
+	'taxonomies' => array('post_tag')
+	) );
+	
+	// Creates "In the Winestation" post type
+	register_post_type('winestation', array(
+	'label' => 'In the Winestation',
+	'public' => true,
+	'show_ui' => true,
+	'capability_type' => 'post',
+	'hierarchical' => false,
+	'rewrite' => array('slug' => 'winestation'),
+	'query_var' => true,
+	'supports' => array(
+	'title',
+	'editor',
+	'revisions',
+	'thumbnail',
+	'author',
+	'page-attributes',),
+	'taxonomies' => array('post_tag')
+	) );
+}
 // End custom post types
 
 
@@ -453,9 +451,9 @@ class Bootstrap_walker extends Walker_Nav_Menu{
    	$attributes .= ! empty( $object->url )        ? ' href="'   . esc_attr( $object->url        ) .'"' : '';
 
    	// if the item has children add these two attributes to the anchor tag
-   	// if ( $args->has_children ) {
-		  // $attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
-    // }
+   	 if ( $args->has_children ) {
+		   $attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
+     }
 
     $item_output = $args->before;
     $item_output .= '<a'. $attributes .'>';

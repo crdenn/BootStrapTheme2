@@ -78,6 +78,14 @@ body .contain {
   background-color: #661D25;  
 }
 
+
+@media screen and (max-width: 720px) {
+.row{
+	padding-top: 0;
+	padding-bottom: 10px;
+}
+}
+
 #wrap > .container {
   padding: 60px 15px 0;
 
@@ -148,34 +156,6 @@ input, textarea, select, .uneditable-input {
 
 /* navbar */
 
-ul.nav {
-	li.dropdown:hover > ul.dropdown-menu {
-    	display: block;    
-	}
-
-	li.dropdown > ul.dropdown-menu .dropdown-menu{
-		left: 100%;
-		top: 0;
-		// padding-top: 0;
-		margin-top: -6px;
-		border-radius: 0 @border-radius-base @border-radius-base 0;
-	}
-
-	>li.dropdown > ul.dropdown-menu > li.dropdown:hover ul.dropdown-menu{
-		border-radius: 0 0 @border-radius-base 0;
-	}
-
-	.dropdown{
-		> .dropdown-menu{
-			.caret{
-				border-top: 4px solid transparent;
-				border-left: 4px solid @link-color;
-				border-bottom: 4px solid transparent;
-				border-right-width: 0;
-			}
-		}
-	}
-}
 
 
 #sidebar2 {  
@@ -200,6 +180,7 @@ ul.nav {
 
 #main article{
 	margin-top: 10px;
+	margin-bottom: 10px;
 //	border-bottom: 1px solid #eeeeee;
 //	padding: 0 0 9px;
 }
@@ -610,6 +591,40 @@ blockquote.pull-left{
 	.carousel-caption p{
 		display: block;
 	}
+	#archTop {
+	padding-top: 20px;
+	padding-bottom: 0px;
+	}
+	
+	ul.nav {
+		li.dropdown:hover > ul.dropdown-menu {
+	    	display: block;    
+		}
+	
+		li.dropdown > ul.dropdown-menu .dropdown-menu{
+			left: 100%;
+			top: 0;
+			// padding-top: 0;
+			margin-top: -6px;
+			border-radius: 0 @border-radius-base @border-radius-base 25;
+		}
+	
+		>li.dropdown > ul.dropdown-menu > li.dropdown:hover ul.dropdown-menu{
+			border-radius: 0 0 @border-radius-base 0;
+		}
+	
+		.dropdown{
+			> .dropdown-menu{
+				.caret{
+					border-top: 4px solid transparent;
+					border-left: 4px solid @link-color;
+					border-bottom: 4px solid transparent;
+					border-right-width: 0;
+				}
+			}
+		}
+	}
+	
 }
 
 @media only screen and (min-width: 980px) {
@@ -670,17 +685,27 @@ blockquote.pull-left{
 		padding-right: 0;
 	}
 	
-
+.masonFade {
+	opacity: 0;
+}
 
 }
 
 // Masonry Grid Classes 
+
+
+#archTop {
+display: inline-block;
+width: 100%;
+text-align: center;
+}
+
 .grid-sizer {
-	width: 25%;	
+	width: 33.33%;	
 }
 
  .item {
- width: 25%;
+ width: 30%;
  }
 
 @media screen and (max-width: 1224px) {
@@ -688,7 +713,7 @@ blockquote.pull-left{
 .item { width: 33.33%; }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
 .grid-sizer { width: 50%; }
 .item { width: 50%; }
 }
@@ -698,3 +723,25 @@ blockquote.pull-left{
 .item { width: 100%; }
 }
 
+// Hide "See More" on small screens
+
+@media screen and (max-width: 991px) {
+#seeMore {
+	visibility: hidden;
+}
+}
+
+#seeMore {
+	font-size: floor(@font-size-base * 1.15);
+	letter-spacing: 1px;
+	font-weight: 100;
+	color: @gray-lighter;
+}
+
+.entry-title {
+background-color: @navbar-inverse-bg;
+color: @gray-light;
+padding: 15px;
+position: static;
+  .box-shadow(0 5px 10px rgba(0,0,0,.5));
+}

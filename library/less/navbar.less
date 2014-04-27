@@ -12,7 +12,7 @@
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   font-family: @font-family-serif;
 
   // Prevent floats from breaking the navbar
@@ -49,7 +49,7 @@
 // content for the user's viewport.
 
 .navbar-collapse {
-  max-height: 50px;
+  height: 50px;
   overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
@@ -59,7 +59,7 @@
   -webkit-overflow-scrolling: touch;
 
   &.in {
-    overflow-y: auto;
+    overflow-y: visible;
   }
 
   @media (min-width: @grid-float-breakpoint) {
@@ -482,7 +482,7 @@
       .open .dropdown-menu {
         > li > a {
           color: @navbar-inverse-link-color;
-          &:hover,
+//          &:hover,
           &:focus {
             color: @navbar-inverse-link-hover-color;
             background-color: @navbar-inverse-link-hover-bg;
@@ -490,7 +490,7 @@
         }
         > .active > a {
           &,
-          &:hover,
+//          &:hover,
           &:focus {
             color: @navbar-inverse-link-active-color;
             background-color: @navbar-inverse-link-active-bg;
@@ -568,7 +568,7 @@
 	color: #ddd;
 }
 .navbar-custom  .navbar-nav li>a:hover, .navbar-nav li .open, .navbar-custom .navbar-nav .active a  {
-	background-color: #000;
+	background-color: @navbar-default-bg;
 }
 .navbar-custom .dropdown-menu{
 	right:0;
@@ -622,26 +622,25 @@
   border-color: @navbar-inverse-border;
   
   
-#nav {
-width: 100%;
-position: relative;
-//top:-350px;
-z-index: 9999;
-}
-
-#nav.affix {
-   position: static;
-  top: 0px;
-   z-index:100;
-    -webkit-transition: all .6s ease-in-out;
+	#nav {
+	width: 100%;
+	position: relative;
+	z-index: 9999;
 	}
-  .navbar-brand {
-    color: @navbar-inverse-brand-color;
-    &:hover,
-    &:focus {
-      color: @navbar-inverse-brand-hover-color;
-      background-color: @navbar-inverse-brand-hover-bg;
-    }  
+
+	#nav.affix {
+	   position: static;
+	  top: 0px;
+	   z-index:100;
+	    -webkit-transition: all .6s ease-in-out;
+		}
+	  .navbar-brand {
+	    color: @navbar-inverse-brand-color;
+	    &:hover,
+	    &:focus {
+	      color: @navbar-inverse-brand-hover-color;
+	      background-color: @navbar-inverse-brand-hover-bg;
+	    }  
 
   .navbar-text {
     color: @navbar-inverse-color;
@@ -707,6 +706,11 @@ z-index: 9999;
     border-color: darken(@navbar-inverse-bg, 7%);
   }
 
+
+@media (min-width: 767px) {
+  .navbar-nav.nav-justified > li{
+      float:none;
+  }
   // Dropdowns
   .navbar-nav {
     > .open > a {
@@ -717,10 +721,6 @@ z-index: 9999;
         color: @navbar-inverse-link-active-color;
       }
     }
-@media (min-width: 767px) {
-  .navbar-nav.nav-justified > li{
-      float:none;
-  }
 }
 .navbar-nav {
   margin: 1px 1px; 
@@ -761,9 +761,7 @@ z-index: 9999;
 }
 }
 }
-.navbar-collapse.in { /*3.0.2 bug workaround*/
-    overflow-y: visible;
-}
+
 
   .navbar-link {
     color: @navbar-inverse-link-color;

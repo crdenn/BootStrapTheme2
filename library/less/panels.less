@@ -9,25 +9,37 @@
 .panel {
  margin-right: (@line-height-computed / 2);
  margin-left: (@line-height-computed / 2);
-  margin-bottom: (@line-height-computed * 1.4);
-  background-color: @panel-bg;
+  margin-bottom: 15px;
+  background-color: darken(#661D25, 1%);
   border: 0px solid transparent;
-  border-radius: @panel-border-radius;
-//  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+
+  .box-shadow(0 5px 10px rgba(0,0,0,.2) inset);
 }
 
 // Panel header
 .panel-header {
-padding: 0 15px 10px 15px;
-  background-color: @navbar-inverse-bg;
+padding: 0 15px 0px 15px;
+  background-color: darken(#661D25, 5%);
+//	border: 1px solid @navbar-inverse-bg;
+//	border-bottom: 0px solid transparent;
+  .clearfix();
+}
+
+// Panel contents
+.panel-mid {
+  padding: 5px 20px 0px 20px;
+  background-color: darken(#661D25, 1%);
+//	border-left: 1px solid @navbar-inverse-bg;
+//	border-right: 1px solid @navbar-inverse-bg;	
   .clearfix();
 }
 
 // Panel contents
 .panel-body {
-  padding: 15px;
-  background-color: @gray-lighter;
-	border: 1px solid @navbar-inverse-bg;
+  padding: 10px 20px 0px 20px;
+  background-color: darken(#661D25, 1%);
+//	border: 1px solid @navbar-inverse-bg;
+//	border-top: 0px solid transparent;
   .clearfix();
 }
 

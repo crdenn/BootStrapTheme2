@@ -6,49 +6,6 @@ img.oldSrc=src;img.src=c.Config.spacer;},resize:function(func){var oldonresize=w
 func();}}}}
 
 
-
-
-
-// Waypoints fade
-
-
-
-
-//STICKY NAVBAR 2
-//$('[data-spy="scroll"]').each(function () {
-//  var $spy = $(this).scrollspy('refresh')
-//})
-//
-//$('#nav-wrapper').removeData('affix').removeClass('affix affix-top affix-bottom');
-//
-///* affix the navbar after scroll below header */
-//$('#nav').affix({
-//      offset: {
-//        top: $('header').height()-$('#nav').height()
-//      }
-//});	
-//
-//$('#nav-wrapper').height($("#nav").height());
-//
-//
-///* highlight the top nav as scrolling occurs */
-//$('body').scrollspy({ target: '#nav' })
-//
-///* smooth scrolling for scroll to top */
-//$('.scroll-top').click(function(){
-//  $('body,html').animate({scrollTop:0},1000);
-//})
-//
-///* smooth scrolling for nav sections */
-//$('#nav .navbar-nav li>a').click(function(){
-//  var link = $(this).attr('href');
-//  var posi = $(link).offset().top+50;
-//  $('body,html').animate({scrollTop:posi},700);
-//})
-// END STICKY NAVBAR
-
-
-
 // add twitter bootstrap classes and color based on how many times tag is used
 function addTwitterBSClass(thisObj) {
   var title = jQuery(thisObj).attr('title');
@@ -150,19 +107,27 @@ jQuery(document).ready(function($) {
 	$('.alert-message').alert();
 
 	$('.dropdown-toggle').dropdown();
+	
+	
  });
 
-// "See More" FADE
+// "See More" FADE	
+
 $(window).on('load', function () {
-$('#seeMore').waypoint(function(direction) {
-        if(direction == 'down'){
-            $(this).fadeTo( "slow" , 0.0);
-        }
-        else if(direction == 'up')
-            $(this).fadeTo( "slow" , 1.0);
-            
-}, { offset: 600 })
+	if ( $(window).width() > 769 ){
+		$('#seeMore').waypoint(function(direction) {
+	        if(direction == 'down'){
+	            $(this).fadeTo( 200 , 0.0);
+	        }
+	        else if(direction == 'up')
+	            $(this).fadeTo( "slow" , 1.0);
+		}, { offset: 500 });
+	}
+	else {
+		$('#seeMore').hide();
+	}
 });
+
 
 // BANNER FADE
 $(window).scroll(function(){
@@ -172,8 +137,31 @@ $(window).scroll(function(){
 
 
 // CONTENT FADE
-$(window).scroll(function(){
-    var percent = $(document).scrollTop() / ($(document).height() - $(window).height());    
-            $('#entry-content').css('opacity', 1 - (percent * 1.5));
-});
 
+$(window).on('load', function () {
+	if ( $(window).width() > 991 ){
+		// Content Fade
+		$('#entry-content').waypoint(function(direction) {
+	        if(direction == 'down'){
+	            $(this).fadeTo( 200 , 0.3);
+	        }
+	        else if(direction == 'up')
+	            $(this).fadeTo( "slow" , 1.0);
+		}, { offset: 50 });
+		}
+	else {
+	}
+	
+	if ( $(window).width() > 991 ){		
+		// Title Fade
+		$('.masonFade').waypoint(function(direction) {
+		    if(direction == 'down'){
+		        $(this).fadeTo( "slow" , 1.0);
+		    }
+		    else if(direction == 'up')
+		        $(this).fadeTo( "slow" , 0.0);
+		}, { offset: '90%' });
+	}
+	else {
+	}
+});
