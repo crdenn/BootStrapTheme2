@@ -376,7 +376,7 @@
 .navbar-default {
 	positon: static;
 	top: 0;
-	z-index: 9999;
+	z-index: @zindex-navbar;
 	background-color: @navbar-inverse-bg;
 	border-color: @navbar-inverse-border;
 	border-radius: 0px;
@@ -399,7 +399,7 @@
     #nav {
     position: static;
     top:0px;
-    z-index: 9999;
+    z-index: @zindex-navbar;
 
     }
     
@@ -408,7 +408,7 @@
        position: fixed;
        width: 100%;
 //       top: -350px;
-       z-index:9999;
+       z-index:@zindex-navbar;
     	}
     	
     	.navbar-collapse.in { /*3.0.2 bug workaround*/
@@ -773,3 +773,5 @@
 }
 
 }
+
+

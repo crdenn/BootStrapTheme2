@@ -33,8 +33,6 @@ function addTwitterBSClass(thisObj) {
 // as the page loads, call these scripts
 jQuery(document).ready(function($) {
 
-
-
 	// modify tag cloud links to match up with twitter bootstrap
 	$("#tag-cloud a").each(function() {
 	    addTwitterBSClass(this);
@@ -108,26 +106,15 @@ jQuery(document).ready(function($) {
 
 	$('.dropdown-toggle').dropdown();
 	
-	
+
+
  });
 
-// "See More" FADE	
-
-$(window).on('load', function () {
-	if ( $(window).width() > 769 ){
-		$('#seeMore').waypoint(function(direction) {
-	        if(direction == 'down'){
-	            $(this).fadeTo( 200 , 0.0);
-	        }
-	        else if(direction == 'up')
-	            $(this).fadeTo( "slow" , 1.0);
-		}, { offset: 500 });
-	}
-	else {
-		$('#seeMore').hide();
-	}
-});
-
+$(document).ready(function () {
+            $('.entry-title').waypoint('sticky', {
+              offset: 55 // Apply "stuck" when element 30px from top
+        });
+ });
 
 // BANNER FADE
 $(window).scroll(function(){
@@ -136,24 +123,47 @@ $(window).scroll(function(){
 });
 
 
-// CONTENT FADE
 
 $(window).on('load', function () {
-	if ( $(window).width() > 991 ){
-		// Content Fade
+	if ( $(window).width() > 767 ){
+
+		// Content Fade out
 		$('#entry-content').waypoint(function(direction) {
 	        if(direction == 'down'){
-	            $(this).fadeTo( 200 , 0.3);
+	            $(this).fadeTo( 1000 , 0.3);
 	        }
 	        else if(direction == 'up')
-	            $(this).fadeTo( "slow" , 1.0);
-		}, { offset: 50 });
-		}
-	else {
-	}
-	
-	if ( $(window).width() > 991 ){		
-		// Title Fade
+	            $(this).fadeTo( 1000 , 1.0);
+		}, { offset: 100 });
+		
+		// Background color fade
+		$('.contain').waypoint(function(direction) {
+		    if(direction == 'down'){
+		        $(this).animate({
+		                  backgroundColor: "#222"
+		              }, 1000 );
+		          
+		    }
+		    else if(direction == 'up')
+		        $(this).animate({
+		                      backgroundColor: "#661D25"
+		                  }, 1000 );
+		}, { offset: 100 });
+		
+		$('.entry-title').waypoint(function(direction) {
+		    if(direction == 'down'){
+		        $(this).animate({
+		                  backgroundColor: "#661D25" , color: "#eee" 
+		              }, 1000 );
+		          
+		    }
+		    else if(direction == 'up')
+		        $(this).animate({
+		                      backgroundColor: "#222" , color: "#e07a0f"
+		                  }, 1000 );
+		}, { offset: 400 });
+		
+		// Masonry Fade In
 		$('.masonFade').waypoint(function(direction) {
 		    if(direction == 'down'){
 		        $(this).fadeTo( "slow" , 1.0);
@@ -161,7 +171,31 @@ $(window).on('load', function () {
 		    else if(direction == 'up')
 		        $(this).fadeTo( "slow" , 0.0);
 		}, { offset: '90%' });
+		}
+	
+	else {
+	$('.contain').css({
+	              backgroundColor: "#661D25"
+	          });
+	$('#entry-content').css({
+	              opacity: "1"
+	          });
+	$('.masonFade').css({
+	              opacity: "1"
+	          });
+	}
+	
+	if ( $(window).width() > 769 ){
+		$('#seeMore').waypoint(function(direction) {
+	        if(direction == 'down'){
+	            $(this).fadeTo( 200 , 0.0);
+	        }
+	        else if(direction == 'up')
+	            $(this).fadeTo( "slow" , 1.0);
+		}, { offset: 600 });
 	}
 	else {
+		$('#seeMore').hide();
 	}
+
 });

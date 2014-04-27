@@ -554,17 +554,24 @@ function my_jquery_method() {
     wp_enqueue_script( 'jquery' );
 }
 
-function waypoints_method() {
-	if( is_category()  ){
-		wp_enqueue_script(
-			'waypoints-script',
-			get_template_directory_uri() . '/js/libs/waypoints.js',
-			array( 'jquery' ),
-			true
-		);
-    }
-}
-add_action( 'wp_enqueue_scripts', 'waypoints_method' );
-
-
+//function waypoints_method() {
+//	if( is_category()  ){
+//		wp_enqueue_script(
+//			'waypoints-script',
+//			get_template_directory_uri() . '/js/libs/waypoints.js',
+//			array( 'jquery' ),
+//			true
+//		);
+//    }
+//}
+//add_action( 'wp_enqueue_scripts', 'waypoints_method' );
+//
+//add_action( 'wp_enqueue_scripts', 'stick_elements' );
+//function stick_elements() {
+// 
+//	wp_enqueue_script( 'waypoints', get_stylesheet_directory_uri() . '/js/waypoints.min.js', array( 'jquery' ), '1.0.0' );
+//	wp_enqueue_script( 'waypoints-sticky', get_stylesheet_directory_uri() .'/js/waypoints-sticky.min.js' , array( 'waypoints' ), '1.0.0' );
+//	wp_enqueue_script( 'waypoints-sticky-init', get_stylesheet_directory_uri() .'/js/waypoints-sticky-init.js' , array( 'waypoints-sticky' ), '1.0.0' );
+// 
+//}
 

@@ -31,8 +31,10 @@ get_header(); ?>
 
 <?php endwhile; // end of the loop. ?>
 
-<center><h1 class="entry-title masonFade"><?php the_title(); ?></h1></center>
-<div id="container" class="js-masonry">
+<div class="entry-title masonFade"><?php the_title(); ?></div>
+
+
+<div id="container" class="js-masonry" style="margin-top: 40px;">
 <?php $my_query = new WP_Query('post_type=onTheTaps');
   while ($my_query->have_posts()) : $my_query->the_post();
   $do_not_duplicate = $post->ID;?>
